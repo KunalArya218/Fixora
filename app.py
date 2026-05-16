@@ -411,6 +411,20 @@ def handle_exception(e):
     <pre>{str(e)}</pre>
     """, 500
 
+@app.route("/test-mail")
+def test_mail():
+
+    success = send_email(
+        "your_other_email@gmail.com",
+        "Fixora Test",
+        "SMTP is working"
+    )
+
+    if success:
+        return "MAIL SENT"
+
+    return "MAIL FAILED"
+
 # =========================================================
 # RUN APP
 # =========================================================
