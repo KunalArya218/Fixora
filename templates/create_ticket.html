@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h2>Create Ticket</h2>
+
+    <form method="POST"
+          enctype="multipart/form-data"
+          autocomplete="off">
+
+        <!-- NAME -->
+        <input type="text"
+               name="name"
+               placeholder="Your Name"
+               autocomplete="off"
+               required>
+
+        <!-- EMAIL -->
+        <input type="email"
+               name="email"
+               placeholder="Your Email"
+               autocomplete="off"
+               required>
+
+        <!-- SUBJECT -->
+        <input type="text"
+               name="subject"
+               placeholder="Issue Subject"
+               autocomplete="off"
+               required>
+
+        <!-- TEXTAREA + MIC -->
+        <div class="textarea-container">
+
+            <textarea
+                id="issue"
+                name="issue"
+                placeholder="Describe your issue..."
+                required></textarea>
+
+        </div>
+
+        <!-- FILE -->
+        <input type="file" name="file">
+
+        <!-- SUBMIT -->
+        <button type="submit">
+            Submit Ticket
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

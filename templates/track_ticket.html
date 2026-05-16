@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h2>Track Ticket</h2>
+
+    <form method="POST">
+
+        <input type="text"
+                autocomplete="off"
+                autocorrect="off"
+                autcapitalize="off"
+                spellcheck="false"
+               name="ticket_id"
+               placeholder="Enter Ticket ID"
+               required>
+
+        <button type="submit">
+            Track Ticket
+        </button>
+
+    </form>
+
+</div>
+
+{% if ticket %}
+
+<div class="ticket-card">
+
+    <h3>{{ ticket.subject }}</h3>
+
+    <div class="ticket-info">
+
+        <p>
+            <strong>Ticket ID:</strong>
+            {{ ticket.ticket_id }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ ticket.status }}
+        </p>
+
+        <p>
+            <strong>Priority:</strong>
+            {{ ticket.priority }}
+        </p>
+
+        <p>
+            <strong>Category:</strong>
+            {{ ticket.category }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

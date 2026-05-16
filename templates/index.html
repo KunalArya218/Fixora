@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="hero-section">
+
+    <h1>
+        Fixora - AI Powered Help Desk
+    </h1>
+
+    <p>
+        Report. Track. Resolve.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a href="/create-ticket" class="primary-btn">
+            Create Ticket
+        </a>
+
+        <a href="/track-ticket" class="secondary-btn">
+            Track Ticket
+        </a>
+
+    </div>
+
+</div>
+
+<div class="features-grid">
+
+    <div class="feature-card">
+        <h3>Ticket System</h3>
+        <p>Create and manage support tickets easily.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>File Uploads</h3>
+        <p>Attach screenshots, logs and documents.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Email Alerts</h3>
+        <p>Receive ticket updates directly on email.</p>
+    </div>
+
+    <div class="feature-card">
+        <h3>Admin Dashboard</h3>
+        <p>Monitor all tickets from one control panel.</p>
+    </div>
+
+</div>
+
+{% endblock %}

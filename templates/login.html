@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h2>Admin Login</h2>
+
+    <form method="POST"
+      autocomplete="off">
+
+        <input type="text"
+                autocomplete="off"
+                autocorrect="off"
+                autapitalize="off"
+                spellcheck="false"
+               name="username"
+               placeholder="Enter Username"
+               required>
+
+        <input type="password"
+                autocomplete="new-password"
+                autocorrect="off"
+                autapitalize="off"
+                spellcheck="false"
+               name="password"
+               placeholder="Enter Password"
+               required>
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="ticket-details-card">
+
+    <!-- HEADER -->
+
+    <div class="ticket-header">
+
+        <h2>
+            {{ ticket.subject }}
+        </h2>
+
+        <span class="status-badge">
+
+            {{ ticket.status }}
+
+        </span>
+
+    </div>
+
+    <!-- INFO -->
+
+    <div class="ticket-info">
+
+        <p>
+            <strong>Ticket ID:</strong>
+
+            {{ ticket.ticket_id }}
+        </p>
+
+        <p>
+            <strong>Name:</strong>
+
+            {{ ticket.name }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+
+            {{ ticket.email }}
+        </p>
+
+        <p>
+            <strong>Priority:</strong>
+
+            {{ ticket.priority }}
+        </p>
+
+        <p>
+            <strong>Category:</strong>
+
+            {{ ticket.category }}
+        </p>
+
+        <p>
+            <strong>Created:</strong>
+
+            {{ ticket.created_at.strftime('%d-%m-%Y %I:%M %p') }}
+        </p>
+
+        <p>
+            <strong>Updated:</strong>
+
+            {{ ticket.updated_at.strftime('%d-%m-%Y %I:%M %p') }}
+        </p>
+
+    </div>
+
+    <!-- ISSUE -->
+
+    <div class="issue-box">
+
+        <h3>
+            Issue Description
+        </h3>
+
+        <p>
+
+            {{ ticket.issue }}
+
+        </p>
+
+    </div>
+
+    <!-- USER FILE -->
+
+    {% if ticket.filename %}
+
+    <a href="{{ url_for(
+        'static',
+        filename='uploads/' + ticket.filename
+    ) }}"
+       target="_blank"
+       class="file-link">
+
+        View Uploaded File
+
+    </a>
+
+    {% endif %}
+
+    <!-- FORM -->
+
+    <form method="POST"
+          enctype="multipart/form-data"
+          autocomplete="off">
+
+        <!-- STATUS -->
+
+        <label>
+            Status
+        </label>
+
+        <select name="status">
+
+            <option value="Open"
+            {% if ticket.status == 'Open' %}
+            selected
+            {% endif %}>
+            Open
+            </option>
+
+            <option value="In Progress"
+            {% if ticket.status == 'In Progress' %}
+            selected
+            {% endif %}>
+            In Progress
+            </option>
+
+            <option value="Resolved"
+            {% if ticket.status == 'Resolved' %}
+            selected
+            {% endif %}>
+            Resolved
+            </option>
+
+            <option value="Closed"
+            {% if ticket.status == 'Closed' %}
+            selected
+            {% endif %}>
+            Closed
+            </option>
+
+        </select>
+
+        <!-- PRIORITY -->
+
+        <label>
+            Priority
+        </label>
+
+        <select name="priority">
+
+            <option value="Low"
+            {% if ticket.priority == 'Low' %}
+            selected
+            {% endif %}>
+            Low
+            </option>
+
+            <option value="Medium"
+            {% if ticket.priority == 'Medium' %}
+            selected
+            {% endif %}>
+            Medium
+            </option>
+
+            <option value="High"
+            {% if ticket.priority == 'High' %}
+            selected
+            {% endif %}>
+            High
+            </option>
+
+            <option value="Critical"
+            {% if ticket.priority == 'Critical' %}
+            selected
+            {% endif %}>
+            Critical
+            </option>
+
+        </select>
+
+        <!-- CATEGORY -->
+
+        <label>
+            Category
+        </label>
+
+        <select name="category">
+
+            <option value="General"
+            {% if ticket.category == 'General' %}
+            selected
+            {% endif %}>
+            General
+            </option>
+
+            <option value="Technical"
+            {% if ticket.category == 'Technical' %}
+            selected
+            {% endif %}>
+            Technical
+            </option>
+
+            <option value="Cybersecurity"
+            {% if ticket.category == 'Cybersecurity' %}
+            selected
+            {% endif %}>
+            Cybersecurity
+            </option>
+
+            <option value="College"
+            {% if ticket.category == 'College' %}
+            selected
+            {% endif %}>
+            College
+            </option>
+
+        </select>
+
+        <!-- REPLY -->
+
+        <div class="reply-box">
+
+            <h3>
+                Reply To User
+            </h3>
+
+            <textarea
+                name="reply_message"
+                placeholder="Write support reply..."
+                required></textarea>
+
+            <input type="file"
+                   name="reply_file">
+
+        </div>
+
+        <!-- BUTTONS -->
+
+        <div class="button-group">
+
+            <!-- UPDATE BUTTON -->
+
+            <button type="submit"
+                    name="action"
+                    value="update"
+                    class="update-btn">
+
+                Update Ticket
+
+            </button>
+
+            <!-- SEND EMAIL BUTTON -->
+
+            <button type="submit"
+                    name="action"
+                    value="send_email"
+                    class="email-btn">
+
+                Send Email
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

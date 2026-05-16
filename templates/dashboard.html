@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HEADER -->
+
+<div class="dashboard-header">
+
+    <h1 class="dashboard-title">
+        Admin Dashboard
+    </h1>
+
+    <!-- LOGOUT BUTTON -->
+
+    <a href="{{ url_for('logout') }}"
+       class="logout-btn">
+
+        Logout
+
+    </a>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+    <div class="stats-card">
+
+        <h3>Total Tickets</h3>
+
+        <p>{{ total }}</p>
+
+    </div>
+
+    <div class="stats-card">
+
+        <h3>Open Tickets</h3>
+
+        <p>{{ open_tickets }}</p>
+
+    </div>
+
+    <div class="stats-card">
+
+        <h3>Resolved Tickets</h3>
+
+        <p>{{ resolved }}</p>
+
+    </div>
+
+    <div class="stats-card">
+
+        <h3>Critical Tickets</h3>
+
+        <p>{{ critical_tickets }}</p>
+
+    </div>
+
+</div>
+
+<!-- TABLE -->
+
+<div class="table-container">
+
+    <table>
+
+        <tr>
+
+            <th>Ticket ID</th>
+
+            <th>Name</th>
+
+            <th>Status</th>
+
+            <th>Priority</th>
+
+            <th>Updated</th>
+
+            <th>View</th>
+
+        </tr>
+
+        {% for ticket in tickets %}
+
+        <tr>
+
+            <td>
+                {{ ticket.ticket_id }}
+            </td>
+
+            <td>
+                {{ ticket.name }}
+            </td>
+
+            <td>
+                {{ ticket.status }}
+            </td>
+
+            <td>
+                {{ ticket.priority }}
+            </td>
+
+            <td>
+
+                {{ ticket.updated_at.strftime('%d-%m-%Y %I:%M %p') }}
+
+            </td>
+
+            <td>
+
+                <a href="{{ url_for(
+                    'ticket_details',
+                    id=ticket.id
+                ) }}"
+                   class="table-btn">
+
+                    Open
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}
