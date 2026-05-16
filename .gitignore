@@ -33,3 +33,6 @@ Thumbs.db
 # Upload folders (optional safety)
 static/uploads/
 static/replies/
+
+__pycache__/
+*.pyc
