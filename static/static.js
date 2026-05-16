@@ -67,4 +67,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+function validateReply(){
+
+    const replyBox =
+        document.getElementById(
+            "reply_message"
+        );
+
+    if(replyBox.value.trim() === ""){
+
+        alert(
+            "Reply message is required for sending email!"
+        );
+
+        return false;
+    }
+
+    return true;
+}
+
+
 console.log("Fixora Loaded Successfully 🚀");
