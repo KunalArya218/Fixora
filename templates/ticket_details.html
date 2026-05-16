@@ -231,8 +231,7 @@
 
             <textarea
                 name="reply_message"
-                placeholder="Write support reply..."
-                required></textarea>
+                placeholder="Write support reply..."></textarea>
 
             <input type="file"
                    name="reply_file">
@@ -259,7 +258,8 @@
             <button type="submit"
                     name="action"
                     value="send_email"
-                    class="email-btn">
+                    class="email-btn"
+                    onclick="return validateReply()">
 
                 Send Email
 
