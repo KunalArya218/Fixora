@@ -27,6 +27,7 @@ import pytz
 import os
 import secrets
 import logging
+import traceback
 
 # =========================================================
 # APP INIT
@@ -159,7 +160,11 @@ def send_email(to, subject, body, attachment_path=None):
         return True
 
     except Exception as e:
-        print("EMAIL FAILED:", str(e))
+        
+        print("===== EMAIL ERROR =====")
+        print(str(e))
+        traceback.print_exc()
+        
         return False
 
 # =========================================================
