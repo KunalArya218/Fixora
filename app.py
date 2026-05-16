@@ -26,6 +26,7 @@ from datetime import datetime
 import pytz
 import os
 import secrets
+import logging
 
 # =========================================================
 # APP INIT
@@ -33,6 +34,7 @@ import secrets
 
 app = Flask(__name__)
 app.config.from_object(Config)
+logging.basicConfig(level=logging.DEBUG)
 
 # =========================================================
 # FILE STORAGE
@@ -392,6 +394,17 @@ Fixora Support Team
 def logout():
     logout_user()
     return redirect(url_for("login"))
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+
+    print("===== ERROR =====")
+    print(str(e))
+
+    return f"""
+    <h1>Internal Server Error</h1>
+    <pre>{str(e)}</pre>
+    """, 500
 
 # =========================================================
 # RUN APP
