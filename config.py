@@ -61,19 +61,8 @@ class Config:
         )
     )
 
-    MAIL_USE_TLS = (
-        os.getenv(
-            "MAIL_USE_TLS",
-            "True"
-        ) == "True"
-    )
-
-    MAIL_USE_SSL = (
-        os.getenv(
-            "MAIL_USE_SSL",
-            "False"
-        ) == "True"
-    )
+    MAIL_USE_TLS = str(os.getenv("MAIL_USE_TLS", "True")).strip().lower() in ["true", "1", "yes"]
+MAIL_USE_SSL = str(os.getenv("MAIL_USE_SSL", "False")).strip().lower() in ["true", "1", "yes"]
 
     MAIL_USERNAME = os.getenv(
         "MAIL_USERNAME"
