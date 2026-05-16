@@ -415,7 +415,7 @@ def handle_exception(e):
 def test_mail():
 
     success = send_email(
-        "your_other_email@gmail.com",
+        "kunalarya218@gmail.com",
         "Fixora Test",
         "SMTP is working"
     )
