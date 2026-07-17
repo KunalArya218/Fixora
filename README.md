@@ -70,7 +70,7 @@ Fixora/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Kunal20060208/fixora.git
+git clone https://github.com/Kunalarya218/fixora.git
 cd fixora
 ```
 
